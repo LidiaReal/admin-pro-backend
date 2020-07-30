@@ -18,19 +18,24 @@ const cors = require('cors');
 const app = express();
 // Configurar CORS
 app.use(cors());
+// Lectura y parseo del body
+app.use(express.json());
 // Base de datos
 dbConnection();
 
 // console.log(process.env); PARA VER TODAS LAS VARIABLES DE ENTORNO
 
 // RUTAS
-// 1. Ruta get simple (para ver el resultado, abrir en Postman: http://localhost:3000/)
+app.use('/api/usuarios', require('./routes/usuarios.routes'));
+app.use('/api/login', require('./routes/auth.routes'));
+
+/* // 1. Ruta get simple (para ver el resultado, abrir en Postman: http://localhost:3000/)
 app.get('/', (req, res) => {
     res.json({
         ok: true,
         msg: 'Hola Mundo'
     });
-});
+});  */
 
 
 // Para levantar el servidor, indicamos el puerto. Con: npm run start:dev, nos hace los cambios automáticamente
