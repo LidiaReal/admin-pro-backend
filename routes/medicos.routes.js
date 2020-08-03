@@ -30,10 +30,12 @@ router.post('/', [
 );
 
 router.put('/:id', [
-
+    validarJWT,
+    check('nombre', 'El nombre del médico es necesario').not().isEmpty(),
+    check('hospital', 'El nombre el hospital es necesario').isMongoId(),
 ], actualizarMedico);
 
-router.delete('/:id', borrarMedico);
+router.delete('/:id', validarJWT, borrarMedico);
 
 
 
