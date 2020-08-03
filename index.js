@@ -28,6 +28,10 @@ dbConnection();
 // RUTAS
 app.use('/api/usuarios', require('./routes/usuarios.routes'));
 app.use('/api/login', require('./routes/auth.routes'));
+app.use('/api/hospitales', require('./routes/hospitales.routes'));
+app.use('/api/medicos', require('./routes/medicos.routes'));
+app.use('/api/todo', require('./routes/busquedas.routes'));
+app.use('/api/upload', require('./routes/uploads.routes'));
 
 /* // 1. Ruta get simple (para ver el resultado, abrir en Postman: http://localhost:3000/)
 app.get('/', (req, res) => {
