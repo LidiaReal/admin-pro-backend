@@ -12,6 +12,8 @@ const { dbConnection } = require('./database/config');
 // Importación de cors
 const cors = require('cors');
 
+const path = require('path');
+
 
 
 // Crear el servidor de express
@@ -35,6 +37,11 @@ app.use('/api/hospitales', require('./routes/hospitales.routes'));
 app.use('/api/medicos', require('./routes/medicos.routes'));
 app.use('/api/todo', require('./routes/busquedas.routes'));
 app.use('/api/upload', require('./routes/uploads.routes'));
+
+// Lo último
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/index.html'));
+})
 
 /* // 1. Ruta get simple (para ver el resultado, abrir en Postman: http://localhost:3000/)
 app.get('/', (req, res) => {
